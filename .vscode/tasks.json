@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "presentation": {
+        "panel": "new"
+    },
+    "tasks": [
+        {
+            "label": "build leetcode",
+            "type": "shell",
+            "command": "g++",
+            "args" : 
+            [
+                "-g", "-std=c++14", "leetcode/leetcode.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

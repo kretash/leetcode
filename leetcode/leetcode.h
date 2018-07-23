@@ -12,6 +12,15 @@
 #include <fstream>
 #include <deque>
 #include <iomanip>
+#include <stack>
+#include <cassert>
+#include <list>
+#include <vector>
+#include <iterator>
+#include <random>
+#include <utility>
+#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -28,6 +37,51 @@ struct ListNode {
 	ListNode *next;
 	ListNode(int x) : val(x), next(nullptr) {}
 };
+
+struct Interval {
+    int start;
+    int end;
+    Interval() : start(0), end(0) {}
+    Interval(int s, int e) : start(s), end(e) {}
+};
+
+size_t random( size_t min, size_t max ) {
+	static random_device rd;
+	static mt19937 gen(rd());
+	uniform_int_distribution<size_t> dis(min, max);
+	return dis(gen);
+}
+
+template<class T>
+void printMatrix( const vector<vector<T>> matrix )
+{
+	for( size_t i = 0; i < matrix.size(); ++i )
+	{
+		cout << "[ ";
+		for( size_t e = 0; e < matrix[i].size(); ++e )
+		{
+			cout << matrix[i][e];
+			if( e != matrix[i].size()-1 ) cout << ", ";
+			else cout << " ] \n";
+		}
+	}
+}
+
+void printList( ListNode* n )
+{
+	ListNode* p = n;
+
+	cout << "[ ";
+	while( p != nullptr )
+	{
+		cout << p->val;
+		p = p ->next;
+
+		if( p != nullptr )
+			cout << ", ";
+	}
+	cout << " ]" << endl;
+}
 
 void trimLeftTrailingSpaces(string &input) {
 	input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
